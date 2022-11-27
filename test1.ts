@@ -1,5 +1,11 @@
-class Student extends Human{
+abstract class Human{
     public name: String;
+    constructor(name: String){
+        this.name = name;
+    }
+}
+
+class Student extends Human{
     private group:String;
     protected averageMark:Number;
 
@@ -33,4 +39,18 @@ class Student extends Human{
     setAverageMark(averageMark:Number){
         this.averageMark = averageMark;    
     }
+
+    toJson(){
+        return {
+            "name":this.name,
+            "group":this.group,
+            "averageMark":this.averageMark
+        }
+    }
+
 }
+
+
+let st = new Student("st1","11d",6);
+
+console.log(st.toJson());
